@@ -17,9 +17,7 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
-    public void add(Usuarios usuarios) {
-        uR.save(usuarios);
-    }
+    public void post(Usuarios usuarios) {uR.save(usuarios);}
 
     @Override
     public void update(Usuarios usuarios) {

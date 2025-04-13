@@ -2,7 +2,7 @@ package pe.edu.upc.anonmusic.dtos;
 
 public class ReaccionesDTO {
     private int codigo;
-    private boolean tipo;
+    private Boolean tipo;
 
     public int getCodigo() {
         return codigo;
@@ -12,11 +12,11 @@ public class ReaccionesDTO {
         this.codigo = codigo;
     }
 
-    public boolean isTipo() {
+    public Boolean getTipo() {
         return tipo;
     }
 
-    public void setTipo(boolean tipo) {
+    public void setTipo(Boolean tipo) {
         this.tipo = tipo;
     }
 }

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.anonmusic.entities.Reacciones;
 import pe.edu.upc.anonmusic.repositories.IReaccionesRepository;
-import pe.edu.upc.anonmusic.repositories.IUsuarioRepository;
 import pe.edu.upc.anonmusic.serviceinterfaces.IReaccionesService;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class ReaccionesServiceImplement implements IReaccionesService {
     }
 
     @Override
-    public void add(Reacciones reacciones) {
+    public void post(Reacciones reacciones) {
         rR.save(reacciones);
     }
 

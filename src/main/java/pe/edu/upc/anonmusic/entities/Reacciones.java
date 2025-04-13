@@ -10,12 +10,12 @@ public class Reacciones {
     private int codigo;
 
     @Column(name = "tipo", nullable = false)
-    private boolean tipo;
+    private Boolean tipo;
 
     public Reacciones() {
     }
 
-    public Reacciones(int codigo, boolean tipo) {
+    public Reacciones(int codigo, Boolean tipo) {
         this.codigo = codigo;
         this.tipo = tipo;
     }
@@ -28,11 +28,11 @@ public class Reacciones {
         this.codigo = codigo;
     }
 
-    public boolean isTipo() {
+    public Boolean getTipo() {
         return tipo;
     }
 
-    public void setTipo(boolean tipo) {
+    public void setTipo(Boolean tipo) {
         this.tipo = tipo;
     }
 }
