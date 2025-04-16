@@ -1,17 +1,17 @@
 package pe.edu.upc.anonmusic.dtos;
 
 public class UsuariosDTO {
-    private int codigo;
+    private int idUsuario;
     private String email;
     private String nombre;
     private String contrasenia;
 
-    public int getCodigo() {
-        return codigo;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getEmail() {

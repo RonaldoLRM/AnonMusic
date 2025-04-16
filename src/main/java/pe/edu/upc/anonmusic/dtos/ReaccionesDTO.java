@@ -1,15 +1,15 @@
 package pe.edu.upc.anonmusic.dtos;
 
 public class ReaccionesDTO {
-    private int codigo;
+    private int idReacciones;
     private Boolean tipo;
 
-    public int getCodigo() {
-        return codigo;
+    public int getIdReacciones() {
+        return idReacciones;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setIdReacciones(int idReacciones) {
+        this.idReacciones = idReacciones;
     }
 
     public Boolean getTipo() {

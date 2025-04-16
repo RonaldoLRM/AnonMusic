@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Reacciones {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigo;
+    private int idReacciones;
 
     @Column(name = "tipo", nullable = false)
     private Boolean tipo;
@@ -15,17 +15,17 @@ public class Reacciones {
     public Reacciones() {
     }
 
-    public Reacciones(int codigo, Boolean tipo) {
-        this.codigo = codigo;
+    public Reacciones(int idReacciones, Boolean tipo) {
+        this.idReacciones = idReacciones;
         this.tipo = tipo;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getIdReacciones() {
+        return idReacciones;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setIdReacciones(int idReacciones) {
+        this.idReacciones = idReacciones;
     }
 
     public Boolean getTipo() {

@@ -34,7 +34,7 @@ public class ReaccionesController {
         rS.update(r);
     }
     @DeleteMapping("{id}")
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") int id){
         rS.delete(id);
     }
 }

@@ -39,7 +39,7 @@ public class UsuarioController {
         uS.update(u);
     }
     @DeleteMapping("{id}")
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") int id){
         uS.delete(id);
     }
 }
