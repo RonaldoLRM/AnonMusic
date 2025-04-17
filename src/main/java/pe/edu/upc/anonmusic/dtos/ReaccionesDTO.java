@@ -4,6 +4,7 @@ import pe.edu.upc.anonmusic.entities.Publicaciones;
 
 public class ReaccionesDTO {
     private int idReacciones;
+    private int idusuario;
     private Boolean tipo;
     private Publicaciones publicaciones;
 
@@ -13,6 +14,14 @@ public class ReaccionesDTO {
 
     public void setIdReacciones(int idReacciones) {
         this.idReacciones = idReacciones;
+    }
+
+    public int getIdusuario() {
+        return idusuario;
+    }
+
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
     }
 
     public Boolean getTipo() {

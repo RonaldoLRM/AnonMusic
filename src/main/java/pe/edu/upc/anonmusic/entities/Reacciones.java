@@ -9,6 +9,9 @@ public class Reacciones {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idReacciones;
 
+    @Column(name = "idusuario", nullable = false)
+    private int idusuario;
+
     @Column(name = "tipo", nullable = false)
     private Boolean tipo;
 
@@ -19,8 +22,9 @@ public class Reacciones {
     public Reacciones() {
     }
 
-    public Reacciones(int idReacciones, Boolean tipo, Publicaciones publicaciones) {
+    public Reacciones(int idReacciones, int idusuario, Boolean tipo, Publicaciones publicaciones) {
         this.idReacciones = idReacciones;
+        this.idusuario = idusuario;
         this.tipo = tipo;
         this.publicaciones = publicaciones;
     }
@@ -31,6 +35,14 @@ public class Reacciones {
 
     public void setIdReacciones(int idReacciones) {
         this.idReacciones = idReacciones;
+    }
+
+    public int getIdusuario() {
+        return idusuario;
+    }
+
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
     }
 
     public Boolean getTipo() {
