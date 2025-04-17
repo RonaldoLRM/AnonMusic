@@ -17,6 +17,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
+    public Usuarios searchId(int id) {
+        return uR.findById(id).orElse(new Usuarios());
+    }
+
+    @Override
     public void post(Usuarios usuarios) {uR.save(usuarios);}
 
     @Override

@@ -1,5 +1,10 @@
 package pe.edu.upc.anonmusic.dtos;
 
+import jakarta.persistence.*;
+import pe.edu.upc.anonmusic.entities.Publicaciones;
+
+import java.util.List;
+
 public class UsuariosDTO {
     private int idUsuario;
     private String email;

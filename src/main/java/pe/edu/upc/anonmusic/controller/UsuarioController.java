@@ -3,9 +3,7 @@ package pe.edu.upc.anonmusic.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.anonmusic.dtos.ReaccionesDTO;
 import pe.edu.upc.anonmusic.dtos.UsuariosDTO;
-import pe.edu.upc.anonmusic.entities.Reacciones;
 import pe.edu.upc.anonmusic.entities.Usuarios;
 import pe.edu.upc.anonmusic.serviceinterfaces.IUsuarioService;
 
@@ -18,21 +16,27 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService uS;
 
-    @GetMapping
+    @GetMapping("/listado")
     public List<UsuariosDTO> listar() {
         return uS.list().stream().map(x->{
         ModelMapper m=new ModelMapper();
         return m.map(x,UsuariosDTO.class);
         }).collect(Collectors.toList());
     }
+    @GetMapping("{id}")
+    public UsuariosDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        UsuariosDTO dto = m.map(uS.searchId(id), UsuariosDTO.class);
+        return dto;
+    }
 
-    @PostMapping
+    @PostMapping("/registrar")
     public void  agregar(@RequestBody UsuariosDTO dto) {
         ModelMapper m=new ModelMapper();
         Usuarios u=m.map(dto,Usuarios.class);
         uS.post(u);
     }
-    @PutMapping
+    @PutMapping("/modificar")
     public void modificar(@RequestBody UsuariosDTO dto) {
         ModelMapper m=new ModelMapper();
         Usuarios u=m.map(dto,Usuarios.class);

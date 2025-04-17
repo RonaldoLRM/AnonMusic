@@ -2,6 +2,8 @@ package pe.edu.upc.anonmusic.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Usuarios")
 
@@ -19,7 +21,7 @@ public class Usuarios {
     public Usuarios() {
     }
 
-    public Usuarios(int idUsuario, String email, String nombre, String contrasenia) {
+    public Usuarios(int idUsuario, String email, String nombre, String contrasenia, List<Publicaciones> publicaciones) {
         this.idUsuario = idUsuario;
         this.email = email;
         this.nombre = nombre;

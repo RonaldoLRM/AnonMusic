@@ -16,20 +16,20 @@ public class NotificacionesController {
     @Autowired
     private INotificacionesService nS;
 
-    @GetMapping
+    @GetMapping("/listado")
     public List<NotificacionesDTO> listar() {
         return nS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
             return m.map(x,NotificacionesDTO.class);
         }).collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping("/registrar")
     public void agregar(@RequestBody NotificacionesDTO dto) {
         ModelMapper m=new ModelMapper();
         Notificaciones r=m.map(dto,Notificaciones.class);
         nS.post(r);
     }
-    @PutMapping
+    @PutMapping("/modificar")
     public void modificar(@RequestBody NotificacionesDTO dto) {
         ModelMapper m=new ModelMapper();
         Notificaciones r=m.map(dto,Notificaciones.class);

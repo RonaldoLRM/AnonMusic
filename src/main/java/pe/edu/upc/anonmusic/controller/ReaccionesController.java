@@ -14,20 +14,20 @@ public class ReaccionesController {
     @Autowired
     private IReaccionesService rS;
 
-    @GetMapping
+    @GetMapping("/listado")
     public List<ReaccionesDTO> listar() {
         return rS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
             return m.map(x,ReaccionesDTO.class);
         }).collect(Collectors.toList());
     }
-    @PostMapping
+    @PostMapping("/registrar")
     public void agregar(@RequestBody ReaccionesDTO dto) {
         ModelMapper m=new ModelMapper();
         Reacciones r=m.map(dto,Reacciones.class);
         rS.post(r);
     }
-    @PutMapping
+    @PutMapping("/modificar")
     public void modificar(@RequestBody ReaccionesDTO dto) {
         ModelMapper m=new ModelMapper();
         Reacciones r=m.map(dto,Reacciones.class);

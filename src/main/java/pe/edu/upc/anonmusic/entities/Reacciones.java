@@ -12,12 +12,17 @@ public class Reacciones {
     @Column(name = "tipo", nullable = false)
     private Boolean tipo;
 
+    @ManyToOne
+    @JoinColumn(name = "idPublicacion")
+    private Publicaciones publicaciones;
+
     public Reacciones() {
     }
 
-    public Reacciones(int idReacciones, Boolean tipo) {
+    public Reacciones(int idReacciones, Boolean tipo, Publicaciones publicaciones) {
         this.idReacciones = idReacciones;
         this.tipo = tipo;
+        this.publicaciones = publicaciones;
     }
 
     public int getIdReacciones() {
@@ -34,5 +39,13 @@ public class Reacciones {
 
     public void setTipo(Boolean tipo) {
         this.tipo = tipo;
+    }
+
+    public Publicaciones getPublicaciones() {
+        return publicaciones;
+    }
+
+    public void setPublicaciones(Publicaciones publicaciones) {
+        this.publicaciones = publicaciones;
     }
 }
