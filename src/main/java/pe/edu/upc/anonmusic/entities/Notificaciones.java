@@ -9,10 +9,10 @@ public class Notificaciones {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idNotificacion;
 
-    @Column(name="tipoNotificacion", nullable=false, length=20)
+    @Column(name="tipoNotificacion", nullable=false, length=30)
     private String tipoNotificacion;
 
-    @Column(name="MensajeNotificacion", nullable=false, length=20)
+    @Column(name="MensajeNotificacion", nullable=false, length=200)
     private String MensajeNotificacion;
 
     public Notificaciones() {

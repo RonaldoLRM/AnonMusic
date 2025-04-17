@@ -10,8 +10,8 @@ import pe.edu.upc.anonmusic.serviceinterfaces.INotificacionesService;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RequestMapping("/notificaciones")
 @RestController
+@RequestMapping("/notificaciones")
 public class NotificacionesController {
     @Autowired
     private INotificacionesService nS;
@@ -26,14 +26,14 @@ public class NotificacionesController {
     @PostMapping("/registrar")
     public void agregar(@RequestBody NotificacionesDTO dto) {
         ModelMapper m=new ModelMapper();
-        Notificaciones r=m.map(dto,Notificaciones.class);
-        nS.post(r);
+        Notificaciones n=m.map(dto,Notificaciones.class);
+        nS.post(n);
     }
     @PutMapping("/modificar")
     public void modificar(@RequestBody NotificacionesDTO dto) {
         ModelMapper m=new ModelMapper();
-        Notificaciones r=m.map(dto,Notificaciones.class);
-        nS.update(r);
+        Notificaciones n=m.map(dto,Notificaciones.class);
+        nS.update(n);
     }
     @DeleteMapping("{id}")
     public void eliminar(@PathVariable("id") int id){
