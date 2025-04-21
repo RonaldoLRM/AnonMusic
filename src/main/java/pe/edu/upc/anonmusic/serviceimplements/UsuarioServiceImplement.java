@@ -33,4 +33,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
     public void delete(int id) {
         uR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> UsuarioconPublicacionConMasLikes() {
+        return uR.UsuarioconPublicacionConMasLikes();
+    }
 }
