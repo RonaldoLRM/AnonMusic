@@ -10,4 +10,5 @@ public interface IUsuarioService {
     public void post(Usuarios usuarios);
     public void update(Usuarios usuarios);
     public void delete(int id);
+    List<String[]> UsuarioconPublicacionConMasLikes();
 }

@@ -3,10 +3,13 @@ package pe.edu.upc.anonmusic.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.anonmusic.dtos.UsuarioReaccionDTO;
 import pe.edu.upc.anonmusic.dtos.UsuariosDTO;
 import pe.edu.upc.anonmusic.entities.Usuarios;
 import pe.edu.upc.anonmusic.serviceinterfaces.IUsuarioService;
 
+import javax.swing.text.StyledEditorKit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,5 +48,18 @@ public class UsuarioController {
     @DeleteMapping("{id}")
     public void eliminar(@PathVariable("id") int id){
         uS.delete(id);
+    }
+
+    @GetMapping("/publicacionconmaslikes")
+    public List<UsuarioReaccionDTO> usuarioconpublicacionconmaslikes() {
+        List<String[]>lista=uS.UsuarioconPublicacionConMasLikes();
+        List<UsuarioReaccionDTO> dtos=new ArrayList<>();
+        for(String[] columna:lista) {
+            UsuarioReaccionDTO dto=new UsuarioReaccionDTO();
+            dto.setNombre(columna[0]);
+            dto.setTipo(Integer.parseInt(columna[1]));
+            dtos.add(dto);
+        }
+        return dtos;
     }
 }

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.anonmusic.dtos.PublicidadDTO;
+import pe.edu.upc.anonmusic.dtos.UsuarioReaccionDTO;
 import pe.edu.upc.anonmusic.entities.Publicaciones;
 import pe.edu.upc.anonmusic.serviceinterfaces.IPublicacionesService;
 import java.util.List;
@@ -38,4 +39,5 @@ public class PublicidadController {
     public void eliminar(@PathVariable("id") int id){
         pS.delete(id);
     }
+
 }
