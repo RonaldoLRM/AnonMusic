@@ -45,7 +45,7 @@ public class MusicaController {
         mS.update(mu);
     }
 
-    @DeleteMapping("/eliminar")
+    @DeleteMapping("{id}")
     public void eliminar(@PathVariable ("id") int id) {
         mS.delete(id);
     }
