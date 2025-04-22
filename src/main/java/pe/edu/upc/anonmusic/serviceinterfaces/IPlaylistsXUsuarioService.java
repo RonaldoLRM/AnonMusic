@@ -1,6 +1,6 @@
 package pe.edu.upc.anonmusic.serviceinterfaces;
 
-import pe.edu.upc.anonmusic.entities.NotificacionesXUsuario;
+
 import pe.edu.upc.anonmusic.entities.PlaylistsXUsuario;
 
 import java.util.List;
