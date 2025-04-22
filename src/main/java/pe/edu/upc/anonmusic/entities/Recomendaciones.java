@@ -8,8 +8,11 @@ public class Recomendaciones {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRecomendacion;
+    @Column(name="contenido", nullable=false,length=100)
     private String contenido;
+    @Column(name="razon", nullable=false,length=255)
     private String razon;
+    @Column(name="vista",nullable=false)
     private boolean vista;
     @ManyToOne
     @JoinColumn(name="PlaylistXUsuario")
