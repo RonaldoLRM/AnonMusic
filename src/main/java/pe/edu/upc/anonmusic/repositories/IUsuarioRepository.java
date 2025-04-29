@@ -28,10 +28,11 @@ public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
             "LIMIT 10;", nativeQuery = true)
     List<String[]> UsuariosconMasSeguidores();
 
-    @Query(value="SELECT u.id_usuario, u.nombre, p.id_playlistsxusuario, p.nombre AS nombre_playlist\n" +
-            "FROM usuarios u\n" +
-            "JOIN playlistsxusuario p ON u.id_usuario = p.usuarios\n" +
-            "LIMIT 5;", nativeQuery = true)
+    @Query(value="SELECT u.id_usuario, u.nombre, COUNT(p.id_playlistsxusuario) AS cantidad_playlists\n" +
+            " FROM usuarios u\n" +
+            " JOIN playlistsxusuario p ON u.id_usuario = p.usuarios\n" +
+            " GROUP BY u.id_usuario, u.nombre\n" +
+            " ORDER BY cantidad_playlists DESC;", nativeQuery = true)
     List<String[]> UsuarioconPlaylistCreadas();
 
     @Query(value="SELECT u.id_usuario, u.nombre, COUNT(m.id_musica) AS total_musica_anonima\n" +

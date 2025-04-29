@@ -87,7 +87,7 @@ public class UsuarioController {
             UsuarioConPlaylistDTO dto=new UsuarioConPlaylistDTO();
             dto.setIdUsuario(Integer.parseInt(columna[0]));
             dto.setNombre(columna[1]);
-            dto.setCantidadPlaylist(Integer.parseInt(columna[2]));
+            dto.setCantidad_playlist(Integer.parseInt(columna[2]));
             dtos.add(dto);
         }
         return dtos;
