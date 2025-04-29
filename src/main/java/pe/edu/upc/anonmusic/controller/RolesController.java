@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.anonmusic.dtos.RolesDTO;
+import pe.edu.upc.anonmusic.dtos.UsuariosPorRolDTO;
 import pe.edu.upc.anonmusic.entities.Roles;
 import pe.edu.upc.anonmusic.serviceinterfaces.IRolesService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,5 +43,18 @@ public class RolesController {
     @DeleteMapping("{id}")
     public void eliminar(@PathVariable("id")int id){
         rS.delete(id);
+    }
+
+    @GetMapping("/cantidadusuariosporrol")
+    public List<UsuariosPorRolDTO> cantidadusuariosporrol() {
+        List<String[]> listas = rS.CantidadDeUsuariosPorRol();
+        List<UsuariosPorRolDTO> dtos = new ArrayList<>();
+        for (String[] columna : listas) {
+            UsuariosPorRolDTO dto = new UsuariosPorRolDTO();
+            dto.setRol(columna[0]);
+            dto.cantidad_usuarios = Integer.parseInt(columna[1]);
+            dtos.add(dto);
+        }
+        return dtos;
     }
 }
