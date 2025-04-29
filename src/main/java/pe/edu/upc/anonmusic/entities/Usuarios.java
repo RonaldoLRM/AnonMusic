@@ -1,7 +1,9 @@
 package pe.edu.upc.anonmusic.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,15 +19,18 @@ public class Usuarios {
     private String nombre;
     @Column(name = "contrasenia", nullable = false, length = 100)
     private String contrasenia;
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Roles> roles = new ArrayList<Roles>();
     public Usuarios() {
     }
 
-    public Usuarios(int idUsuario, String email, String nombre, String contrasenia, List<Publicaciones> publicaciones) {
+    public Usuarios(int idUsuario, String email, String nombre, String contrasenia, List<Roles> roles) {
         this.idUsuario = idUsuario;
         this.email = email;
         this.nombre = nombre;
         this.contrasenia = contrasenia;
+        this.roles = roles;
     }
 
     public int getIdUsuario() {
@@ -58,5 +63,13 @@ public class Usuarios {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+
+    public List<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
     }
 }
