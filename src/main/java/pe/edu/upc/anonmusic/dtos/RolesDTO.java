@@ -5,7 +5,7 @@ import pe.edu.upc.anonmusic.entities.Usuarios;
 public class RolesDTO {
     private int idRol;
 
-    private String tipo;
+    private String rol;
 
     private Usuarios usuario;
 
@@ -17,12 +17,12 @@ public class RolesDTO {
         this.idRol = idRol;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getRol() {
+        return rol;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public Usuarios getUsuario() {

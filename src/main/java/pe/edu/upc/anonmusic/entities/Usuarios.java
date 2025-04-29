@@ -20,8 +20,8 @@ public class Usuarios {
     @Column(name = "contrasenia", nullable = false, length = 100)
     private String contrasenia;
     @JsonIgnore
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Roles> roles = new ArrayList<Roles>();
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Roles> roles;
     public Usuarios() {
     }
 

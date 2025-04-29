@@ -3,14 +3,14 @@ package pe.edu.upc.anonmusic.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Roles")
+@Table(name = "Roles", uniqueConstraints = {@UniqueConstraint(columnNames = {"idUsuario", "rol"})})
 public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRol;
 
-    @Column(name = "tipo", nullable = false, length = 30)
-    private String tipo;
+    @Column(name = "rol", nullable = false, length = 30)
+    private String rol;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
@@ -19,9 +19,9 @@ public class Roles {
     public Roles() {
     }
 
-    public Roles(int idRol, String tipo, Usuarios usuario) {
+    public Roles(int idRol, String rol, Usuarios usuario) {
         this.idRol = idRol;
-        this.tipo = tipo;
+        this.rol = rol;
         this.usuario = usuario;
     }
 
@@ -33,12 +33,12 @@ public class Roles {
         this.idRol = idRol;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getRol() {
+        return rol;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public Usuarios getUsuario() {
