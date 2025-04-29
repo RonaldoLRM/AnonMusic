@@ -107,4 +107,19 @@ public class UsuarioController {
         }
         return dtos;
     }
+
+    @GetMapping("/usuariosconmasnotificacionesnoleidas")
+    public List<UsuariosConMasNotificacionesNoLeidasDTO> usuariosConMasNotificacionesNoLeidas()
+    {
+        List<String[]>listas=uS.UsuariosconMasNotificacionesNoLeidas();
+        List<UsuariosConMasNotificacionesNoLeidasDTO> dtos=new ArrayList<>();
+        for(String[] columna:listas) {
+            UsuariosConMasNotificacionesNoLeidasDTO dto=new UsuariosConMasNotificacionesNoLeidasDTO();
+            dto.setIdUsuario(Integer.parseInt(columna[0]));
+            dto.setNombre(columna[1]);
+            dto.setTotal_notificaciones_no_leidas(Integer.parseInt(columna[2]));
+            dtos.add(dto);
+        }
+        return dtos;
+    }
 }

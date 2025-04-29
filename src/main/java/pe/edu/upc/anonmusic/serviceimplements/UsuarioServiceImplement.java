@@ -53,4 +53,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
         return uR.UsuariosconMasMusicaAnonima();
     }
 
+    @Override
+    public List<String[]> UsuariosconMasNotificacionesNoLeidas() {
+        return uR.UsuariosconMasNotificacionesNoLeidas();
+    }
+
 }

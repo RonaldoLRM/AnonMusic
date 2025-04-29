@@ -42,4 +42,13 @@ public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
             "ORDER BY total_musica_anonima DESC\n" +
             "LIMIT 5;", nativeQuery = true)
     List<String[]> UsuariosconMasMusicaAnonima();
+
+    @Query(value="SELECT u.id_usuario, u.nombre, COUNT(npu.id_notificacionesx_usuario) AS total_notificaciones_no_leidas\n" +
+            "FROM usuarios u\n" +
+            "LEFT JOIN notificacionesxusuario npu ON u.id_usuario = npu.id_usuario\n" +
+            "WHERE npu.visto = false\n" +
+            "GROUP BY u.id_usuario\n" +
+            "ORDER BY total_notificaciones_no_leidas DESC\n" +
+            "LIMIT 5;", nativeQuery = true)
+    List<String[]> UsuariosconMasNotificacionesNoLeidas();
 }
