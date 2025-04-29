@@ -15,4 +15,5 @@ public interface IUsuarioService {
     List<String[]> UsuariosconPublicacionConMasLikes(LocalDate fechaInicio,LocalDate fechafin);
     List<String[]>UsuariosconMasSeguidores();
     List<String[]> UsuarioconPlaylistCreadas();
+    List<String[]> UsuariosconMasMusicaAnonima();
 }

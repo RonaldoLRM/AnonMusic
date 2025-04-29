@@ -92,4 +92,19 @@ public class UsuarioController {
         }
         return dtos;
     }
+
+    @GetMapping("/usuariosconmasmusicaanonima")
+    public List<UsuariosConMasMusicaAnonimaDTO> usuariosConMasMusicaAnonima()
+    {
+        List<String[]>listas=uS.UsuariosconMasMusicaAnonima();
+        List<UsuariosConMasMusicaAnonimaDTO> dtos=new ArrayList<>();
+        for(String[] columna:listas) {
+            UsuariosConMasMusicaAnonimaDTO dto=new UsuariosConMasMusicaAnonimaDTO();
+            dto.setIdUsuario(Integer.parseInt(columna[0]));
+            dto.setNombre(columna[1]);
+            dto.setTotal_musica_anonima(Integer.parseInt(columna[2]));
+            dtos.add(dto);
+        }
+        return dtos;
+    }
 }

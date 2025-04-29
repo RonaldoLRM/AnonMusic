@@ -33,4 +33,13 @@ public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
             "JOIN playlistsxusuario p ON u.id_usuario = p.usuarios\n" +
             "LIMIT 5;", nativeQuery = true)
     List<String[]> UsuarioconPlaylistCreadas();
+
+    @Query(value="SELECT u.id_usuario, u.nombre, COUNT(m.id_musica) AS total_musica_anonima\n" +
+            "FROM usuarios u\n" +
+            "LEFT JOIN musica m ON u.id_usuario = m.id_usuario\n" +
+            "WHERE m.privacidad = true\n" +
+            "GROUP BY u.id_usuario\n" +
+            "ORDER BY total_musica_anonima DESC\n" +
+            "LIMIT 5;", nativeQuery = true)
+    List<String[]> UsuariosconMasMusicaAnonima();
 }
