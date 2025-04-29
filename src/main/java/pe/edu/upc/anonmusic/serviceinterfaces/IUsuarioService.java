@@ -1,7 +1,9 @@
 package pe.edu.upc.anonmusic.serviceinterfaces;
 
+import org.springframework.data.repository.query.Param;
 import pe.edu.upc.anonmusic.entities.Usuarios;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IUsuarioService {
@@ -10,5 +12,5 @@ public interface IUsuarioService {
     public void post(Usuarios usuarios);
     public void update(Usuarios usuarios);
     public void delete(int id);
-    public List<String[]> UsuarioconPublicacionConMasLikes();
+    List<String[]> UsuariosconPublicacionConMasLikes(LocalDate fechaInicio,LocalDate fechafin);
 }

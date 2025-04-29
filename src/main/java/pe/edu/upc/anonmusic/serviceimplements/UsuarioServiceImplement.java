@@ -6,6 +6,7 @@ import pe.edu.upc.anonmusic.entities.Usuarios;
 import pe.edu.upc.anonmusic.repositories.IUsuarioRepository;
 import pe.edu.upc.anonmusic.serviceinterfaces.IUsuarioService;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class UsuarioServiceImplement implements IUsuarioService {
@@ -35,7 +36,7 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
-    public List<String[]> UsuarioconPublicacionConMasLikes() {
-        return uR.UsuarioconPublicacionConMasLikes();
+    public List<String[]> UsuariosconPublicacionConMasLikes(LocalDate fechaInicio, LocalDate fechafin) {
+        return uR.UsuariosconPublicacionConMasLikes(fechaInicio, fechafin);
     }
 }

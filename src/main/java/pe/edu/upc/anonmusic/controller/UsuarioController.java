@@ -2,12 +2,14 @@ package pe.edu.upc.anonmusic.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.anonmusic.dtos.UsuarioReaccionDTO;
 import pe.edu.upc.anonmusic.dtos.UsuariosDTO;
 import pe.edu.upc.anonmusic.entities.Usuarios;
 import pe.edu.upc.anonmusic.serviceinterfaces.IUsuarioService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,8 +52,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/publicacionconmaslikes")
-    public List<UsuarioReaccionDTO> usuarioconpublicacionconmaslikes() {
-        List<String[]>lista=uS.UsuarioconPublicacionConMasLikes();
+    public List<UsuarioReaccionDTO> usuarioconpublicacionconmaslikes(@RequestParam LocalDate fechaInicio,@RequestParam LocalDate fechafin) {
+        List<String[]>lista=uS.UsuariosconPublicacionConMasLikes(fechaInicio, fechafin);
         List<UsuarioReaccionDTO> dtos=new ArrayList<>();
         for(String[] columna:lista) {
             UsuarioReaccionDTO dto=new UsuarioReaccionDTO();
