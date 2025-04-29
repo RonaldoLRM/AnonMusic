@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.anonmusic.dtos.MusicaDTO;
+import pe.edu.upc.anonmusic.dtos.UsuarioQ2DTO;
 import pe.edu.upc.anonmusic.entities.Musica;
 import pe.edu.upc.anonmusic.serviceinterfaces.IMusicaService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,5 +50,19 @@ public class MusicaController {
     @DeleteMapping("{id}")
     public void eliminar(@PathVariable ("id") int id) {
         mS.delete(id);
+    }
+
+    @GetMapping("/usuariossinasesoramientos")
+    public List<UsuarioQ2DTO> usuariossinasesoramientos()
+    {
+        List<String[]>lista=mS.UsuariossinAsesoramientos();
+        List<UsuarioQ2DTO> dtos=new ArrayList<>();
+        for(String[] columna:lista) {
+            UsuarioQ2DTO dto=new UsuarioQ2DTO();
+            dto.setNombre(columna[0]);
+            dto.setNombreMusica(columna[1]);
+            dtos.add(dto);
+        }
+        return dtos;
     }
 }

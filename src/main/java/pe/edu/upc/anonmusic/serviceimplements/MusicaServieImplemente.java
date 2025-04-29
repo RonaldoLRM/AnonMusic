@@ -37,4 +37,9 @@ public class MusicaServieImplemente implements IMusicaService {
     public void delete(int id) {
         mR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> UsuariossinAsesoramientos() {
+        return mR.UsuariossinAsesoramientos();
+    }
 }

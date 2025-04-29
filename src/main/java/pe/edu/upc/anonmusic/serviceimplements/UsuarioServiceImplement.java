@@ -46,5 +46,6 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
-    public List<String[]> UsuarioconPlaylistCreadas(){return uR.UsuarioconPlaylistCreadas();};
+    public List<String[]> UsuarioconPlaylistCreadas(){return uR.UsuarioconPlaylistCreadas();}
+
 }

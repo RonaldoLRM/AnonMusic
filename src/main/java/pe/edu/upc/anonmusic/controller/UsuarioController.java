@@ -4,10 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.anonmusic.dtos.UsuarioConMasSeguidoresDTO;
-import pe.edu.upc.anonmusic.dtos.UsuarioConPlaylistDTO;
-import pe.edu.upc.anonmusic.dtos.UsuarioReaccionDTO;
-import pe.edu.upc.anonmusic.dtos.UsuariosDTO;
+import pe.edu.upc.anonmusic.dtos.*;
 import pe.edu.upc.anonmusic.entities.Usuarios;
 import pe.edu.upc.anonmusic.serviceinterfaces.IUsuarioService;
 
@@ -53,7 +50,7 @@ public class UsuarioController {
         uS.delete(id);
     }
 
-    @GetMapping("/publicacionconmaslikes")
+    @GetMapping("/usuarioconpublicacionconmaslikes")
     public List<UsuarioReaccionDTO> usuarioconpublicacionconmaslikes(@RequestParam LocalDate fechaInicio,@RequestParam LocalDate fechafin) {
         List<String[]>lista=uS.UsuariosconPublicacionConMasLikes(fechaInicio, fechafin);
         List<UsuarioReaccionDTO> dtos=new ArrayList<>();

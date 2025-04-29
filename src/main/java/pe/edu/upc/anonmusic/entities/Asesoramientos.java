@@ -22,7 +22,7 @@ public class Asesoramientos {
     private LocalDate fechaAtendido;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario")
+    @JoinColumn(name = "idUsuario",nullable = true)
     private Usuarios usuario;
 
     public Asesoramientos() {

@@ -10,4 +10,5 @@ public interface IMusicaService {
     public void post(Musica musica);
     public void update(Musica musica);
     public void delete(int id);
+    List<String[]> UsuariossinAsesoramientos();
 }
