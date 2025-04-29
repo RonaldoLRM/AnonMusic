@@ -14,4 +14,5 @@ public interface IUsuarioService {
     public void delete(int id);
     List<String[]> UsuariosconPublicacionConMasLikes(LocalDate fechaInicio,LocalDate fechafin);
     List<String[]>UsuariosconMasSeguidores();
+    List<String[]> UsuarioconPlaylistCreadas();
 }

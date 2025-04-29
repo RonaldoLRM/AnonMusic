@@ -44,4 +44,7 @@ public class UsuarioServiceImplement implements IUsuarioService {
     public List<String[]> UsuariosconMasSeguidores() {
         return uR.UsuariosconMasSeguidores();
     }
+
+    @Override
+    public List<String[]> UsuarioconPlaylistCreadas(){return uR.UsuarioconPlaylistCreadas();};
 }

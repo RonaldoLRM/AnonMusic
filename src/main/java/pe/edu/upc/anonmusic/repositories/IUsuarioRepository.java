@@ -27,4 +27,10 @@ public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
             "ORDER BY totalSeguidores DESC\n" +
             "LIMIT 10;", nativeQuery = true)
     List<String[]> UsuariosconMasSeguidores();
+
+    @Query(value="SELECT u.id_usuario, u.nombre, p.id_playlistsxusuario, p.nombre AS nombre_playlist\n" +
+            "FROM usuarios u\n" +
+            "JOIN playlistsxusuario p ON u.id_usuario = p.usuarios\n" +
+            "LIMIT 5;", nativeQuery = true)
+    List<String[]> UsuarioconPlaylistCreadas();
 }
