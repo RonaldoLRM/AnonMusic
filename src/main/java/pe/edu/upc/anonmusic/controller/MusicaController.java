@@ -59,7 +59,7 @@ public class MusicaController {
         List<UsuarioQ2DTO> dtos=new ArrayList<>();
         for(String[] columna:lista) {
             UsuarioQ2DTO dto=new UsuarioQ2DTO();
-            dto.setNombre(columna[0]);
+            dto.setUsername(columna[0]);
             dto.setNombreMusica(columna[1]);
             dtos.add(dto);
         }

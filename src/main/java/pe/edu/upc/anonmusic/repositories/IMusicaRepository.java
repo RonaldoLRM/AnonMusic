@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface IMusicaRepository extends JpaRepository<Musica, Integer> {
-    @Query(value = "SELECT u.nombre AS nombre_usuario, m.nombre AS nombre_musica\n" +
+    @Query(value = "SELECT u.username AS nombre_usuario, m.nombre AS nombre_musica\n" +
             "FROM musica m\n" +
             "JOIN usuarios u ON m.id_usuario = u.id_usuario\n" +
             "JOIN asesoramientos a ON a.id_musica = m.id_musica\n" +

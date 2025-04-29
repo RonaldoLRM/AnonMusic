@@ -1,15 +1,16 @@
 package pe.edu.upc.anonmusic.dtos;
 
 public class UsuarioQ2DTO {
-    private String nombre;
+    private String username;
     private String nombreMusica;
 
-    public String getNombre() {
-        return nombre;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getNombreMusica() {

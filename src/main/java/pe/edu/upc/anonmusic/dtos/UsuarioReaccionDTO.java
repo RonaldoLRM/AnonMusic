@@ -1,15 +1,15 @@
 package pe.edu.upc.anonmusic.dtos;
 
 public class UsuarioReaccionDTO {
-    private String nombre;
+    private String username;
     private int tipo;
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getTipo() {

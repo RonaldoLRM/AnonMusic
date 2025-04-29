@@ -56,7 +56,7 @@ public class UsuarioController {
         List<UsuarioReaccionDTO> dtos=new ArrayList<>();
         for(String[] columna:lista) {
             UsuarioReaccionDTO dto=new UsuarioReaccionDTO();
-            dto.setNombre(columna[0]);
+            dto.setUsername(columna[0]);
             dto.setTipo(Integer.parseInt(columna[1]));
             dtos.add(dto);
         }
@@ -70,7 +70,7 @@ public class UsuarioController {
         for(String[] columna:lista) {
             UsuarioConMasSeguidoresDTO dto=new UsuarioConMasSeguidoresDTO();
             dto.setIdUsuario(Integer.parseInt(columna[0]));
-            dto.setNombre(columna[1]);
+            dto.setUsername(columna[1]);
             dto.setCorreo(columna[2]);
             dto.setTotalseguidores(Integer.parseInt(columna[3]));
             dtos.add(dto);
@@ -86,7 +86,7 @@ public class UsuarioController {
         for(String[] columna:listas) {
             UsuarioConPlaylistDTO dto=new UsuarioConPlaylistDTO();
             dto.setIdUsuario(Integer.parseInt(columna[0]));
-            dto.setNombre(columna[1]);
+            dto.setUsername(columna[1]);
             dto.setCantidad_playlist(Integer.parseInt(columna[2]));
             dtos.add(dto);
         }
@@ -101,7 +101,7 @@ public class UsuarioController {
         for(String[] columna:listas) {
             UsuariosConMasMusicaAnonimaDTO dto=new UsuariosConMasMusicaAnonimaDTO();
             dto.setIdUsuario(Integer.parseInt(columna[0]));
-            dto.setNombre(columna[1]);
+            dto.setUsername(columna[1]);
             dto.setTotal_musica_anonima(Integer.parseInt(columna[2]));
             dtos.add(dto);
         }
@@ -116,7 +116,7 @@ public class UsuarioController {
         for(String[] columna:listas) {
             UsuariosConMasNotificacionesNoLeidasDTO dto=new UsuariosConMasNotificacionesNoLeidasDTO();
             dto.setIdUsuario(Integer.parseInt(columna[0]));
-            dto.setNombre(columna[1]);
+            dto.setUsername(columna[1]);
             dto.setTotal_notificaciones_no_leidas(Integer.parseInt(columna[2]));
             dtos.add(dto);
         }

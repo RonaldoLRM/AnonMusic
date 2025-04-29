@@ -11,31 +11,31 @@ import java.util.List;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
-    @Query(value="Select u.nombre as \"Nombre de usuario\", count (r.tipo= true) as \"Likes\"\n" +
+    @Query(value="Select u.username as \"Nombre de usuario\", count (r.tipo= true) as \"Likes\"\n" +
             "from usuarios u\n" +
             "join publicaciones p on U.id_usuario = P.id_usuario\n" +
             "join reacciones r on p.id_publicacion = r.id_publicacion\n" +
             "where p.archivo is not null and p.privacidad=false and p.fecha_publicacion between :fechaInicio and :fechafin\n" +
-            "group by u.nombre\n" +
+            "group by u.username\n" +
             "order by count(r.tipo) desc\n" +
             "limit 5",nativeQuery = true)
     List<String[]> UsuariosconPublicacionConMasLikes(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechafin") LocalDate fechafin);
-    @Query(value="SELECT u.id_Usuario, u.nombre, u.email, SUM(s.cantidad) AS totalSeguidores\n" +
+    @Query(value="SELECT u.id_Usuario, u.username, u.email, SUM(s.cantidad) AS totalSeguidores\n" +
             "FROM Seguidores s\n" +
             "INNER JOIN Usuarios u ON s.id_Usuario = u.id_Usuario\n" +
-            "GROUP BY u.id_Usuario, u.nombre, u.email\n" +
+            "GROUP BY u.id_Usuario, u.username, u.email\n" +
             "ORDER BY totalSeguidores DESC\n" +
             "LIMIT 10;", nativeQuery = true)
     List<String[]> UsuariosconMasSeguidores();
 
-    @Query(value="SELECT u.id_usuario, u.nombre, COUNT(p.id_playlistsxusuario) AS cantidad_playlists\n" +
+    @Query(value="SELECT u.id_usuario, u.username, COUNT(p.id_playlistsxusuario) AS cantidad_playlists\n" +
             " FROM usuarios u\n" +
             " JOIN playlistsxusuario p ON u.id_usuario = p.usuarios\n" +
-            " GROUP BY u.id_usuario, u.nombre\n" +
+            " GROUP BY u.id_usuario, u.username\n" +
             " ORDER BY cantidad_playlists DESC;", nativeQuery = true)
     List<String[]> UsuarioconPlaylistCreadas();
 
-    @Query(value="SELECT u.id_usuario, u.nombre, COUNT(m.id_musica) AS total_musica_anonima\n" +
+    @Query(value="SELECT u.id_usuario, u.username, COUNT(m.id_musica) AS total_musica_anonima\n" +
             "FROM usuarios u\n" +
             "LEFT JOIN musica m ON u.id_usuario = m.id_usuario\n" +
             "WHERE m.privacidad = true\n" +
@@ -44,7 +44,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
             "LIMIT 5;", nativeQuery = true)
     List<String[]> UsuariosconMasMusicaAnonima();
 
-    @Query(value="SELECT u.id_usuario, u.nombre, COUNT(npu.id_notificacionesx_usuario) AS total_notificaciones_no_leidas\n" +
+    @Query(value="SELECT u.id_usuario, u.username, COUNT(npu.id_notificacionesx_usuario) AS total_notificaciones_no_leidas\n" +
             "FROM usuarios u\n" +
             "LEFT JOIN notificacionesxusuario npu ON u.id_usuario = npu.id_usuario\n" +
             "WHERE npu.visto = false\n" +

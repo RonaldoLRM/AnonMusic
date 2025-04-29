@@ -2,7 +2,7 @@ package pe.edu.upc.anonmusic.dtos;
 
 public class UsuarioConMasSeguidoresDTO {
     private int idUsuario;
-    private String nombre;
+    private String username;
     public String correo;
     public int totalseguidores;
 
@@ -14,12 +14,12 @@ public class UsuarioConMasSeguidoresDTO {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getCorreo() {

@@ -15,21 +15,23 @@ public class Usuarios {
     private int idUsuario;
     @Column(name = "email", nullable = false, length = 100)
     private String email;
-    @Column(name = "nombre", nullable = false, length = 100)
-    private String nombre;
-    @Column(name = "contrasenia", nullable = false, length = 100)
-    private String contrasenia;
+    @Column(name = "username",unique = true, nullable = false, length = 100)
+    private String username;
+    @Column(name = "contrasenia", nullable = false, length = 200)
+    private String password;
+    private Boolean enabled;
     @JsonIgnore
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Roles> roles;
     public Usuarios() {
     }
 
-    public Usuarios(int idUsuario, String email, String nombre, String contrasenia, List<Roles> roles) {
+    public Usuarios(int idUsuario, String email, String username, String password, Boolean enabled, List<Roles> roles) {
         this.idUsuario = idUsuario;
         this.email = email;
-        this.nombre = nombre;
-        this.contrasenia = contrasenia;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
         this.roles = roles;
     }
 
@@ -49,20 +51,28 @@ public class Usuarios {
         this.email = email;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public List<Roles> getRoles() {

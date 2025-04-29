@@ -2,7 +2,7 @@ package pe.edu.upc.anonmusic.dtos;
 
 public class UsuariosConMasNotificacionesNoLeidasDTO {
     private int idUsuario;
-    private String nombre;
+    private String username;
     public int total_notificaciones_no_leidas;
 
     public int getIdUsuario() {
@@ -13,12 +13,12 @@ public class UsuariosConMasNotificacionesNoLeidasDTO {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getTotal_notificaciones_no_leidas() {

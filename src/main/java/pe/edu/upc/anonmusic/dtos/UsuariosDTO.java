@@ -1,16 +1,18 @@
 package pe.edu.upc.anonmusic.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import pe.edu.upc.anonmusic.entities.Publicaciones;
+import pe.edu.upc.anonmusic.entities.Roles;
 
 import java.util.List;
 
 public class UsuariosDTO {
     private int idUsuario;
     private String email;
-    private String nombre;
-    private String contrasenia;
-
+    private String username;
+    private String password;
+    private Boolean enabled;
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -27,19 +29,27 @@ public class UsuariosDTO {
         this.email = email;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
