@@ -9,4 +9,5 @@ public interface IPublicacionesService {
     public void post(Publicaciones publicaciones);
     public void update(Publicaciones publicaciones);
     public void delete(int id);
+    List<String[]>PublicacionesConMasComentarios();
 }
