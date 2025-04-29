@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.anonmusic.dtos.UsuarioConMasSeguidoresDTO;
 import pe.edu.upc.anonmusic.dtos.UsuarioReaccionDTO;
 import pe.edu.upc.anonmusic.dtos.UsuariosDTO;
 import pe.edu.upc.anonmusic.entities.Usuarios;
@@ -59,6 +60,21 @@ public class UsuarioController {
             UsuarioReaccionDTO dto=new UsuarioReaccionDTO();
             dto.setNombre(columna[0]);
             dto.setTipo(Integer.parseInt(columna[1]));
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+    @GetMapping("/usuariosconmasseguidores")
+    public List<UsuarioConMasSeguidoresDTO> usuarioconmasseguidores()
+    {
+        List<String[]>lista=uS.UsuariosconMasSeguidores();
+        List<UsuarioConMasSeguidoresDTO> dtos=new ArrayList<>();
+        for(String[] columna:lista) {
+            UsuarioConMasSeguidoresDTO dto=new UsuarioConMasSeguidoresDTO();
+            dto.setIdUsuario(Integer.parseInt(columna[0]));
+            dto.setNombre(columna[1]);
+            dto.setCorreo(columna[2]);
+            dto.setTotalseguidores(Integer.parseInt(columna[3]));
             dtos.add(dto);
         }
         return dtos;

@@ -20,4 +20,11 @@ public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
             "order by count(r.tipo) desc\n" +
             "limit 5",nativeQuery = true)
     List<String[]> UsuariosconPublicacionConMasLikes(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechafin") LocalDate fechafin);
+    @Query(value="SELECT u.id_Usuario, u.nombre, u.email, SUM(s.cantidad) AS totalSeguidores\n" +
+            "FROM Seguidores s\n" +
+            "INNER JOIN Usuarios u ON s.id_Usuario = u.id_Usuario\n" +
+            "GROUP BY u.id_Usuario, u.nombre, u.email\n" +
+            "ORDER BY totalSeguidores DESC\n" +
+            "LIMIT 10;", nativeQuery = true)
+    List<String[]> UsuariosconMasSeguidores();
 }

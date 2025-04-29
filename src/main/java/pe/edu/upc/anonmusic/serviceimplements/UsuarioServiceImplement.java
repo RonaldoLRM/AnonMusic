@@ -39,4 +39,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
     public List<String[]> UsuariosconPublicacionConMasLikes(LocalDate fechaInicio, LocalDate fechafin) {
         return uR.UsuariosconPublicacionConMasLikes(fechaInicio, fechafin);
     }
+
+    @Override
+    public List<String[]> UsuariosconMasSeguidores() {
+        return uR.UsuariosconMasSeguidores();
+    }
 }

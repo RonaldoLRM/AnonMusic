@@ -13,4 +13,5 @@ public interface IUsuarioService {
     public void update(Usuarios usuarios);
     public void delete(int id);
     List<String[]> UsuariosconPublicacionConMasLikes(LocalDate fechaInicio,LocalDate fechafin);
+    List<String[]>UsuariosconMasSeguidores();
 }
