@@ -18,7 +18,7 @@ public class Asesoramientos {
     @JoinColumn(name = "idMusica")
     private Musica musica;
 
-    @Column(name = "fechaAtendido")
+    @Column(name = "fechaAtendido", nullable = true)
     private LocalDate fechaAtendido;
 
     @ManyToOne
