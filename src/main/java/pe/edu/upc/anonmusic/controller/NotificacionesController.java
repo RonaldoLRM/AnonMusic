@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.anonmusic.dtos.NotificacionesDTO;
+import pe.edu.upc.anonmusic.dtos.NotificacionesNoVistasDTO;
 import pe.edu.upc.anonmusic.entities.Notificaciones;
 import pe.edu.upc.anonmusic.serviceinterfaces.INotificacionesService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,5 +40,18 @@ public class NotificacionesController {
     @DeleteMapping("{id}")
     public void eliminar(@PathVariable("id") int id){
         nS.delete(id);
+    }
+
+    @GetMapping("/notificacionesnovistas")
+    public List<NotificacionesNoVistasDTO> notificacionesnovistas() {
+        List<String[]> lista = nS.CantidadNotificacionesNoVistas();
+        List<NotificacionesNoVistasDTO> dtos = new ArrayList<>();
+        for (String[] columna : lista) {
+            NotificacionesNoVistasDTO dto = new NotificacionesNoVistasDTO();
+            dto.setTipoNotificacion(columna[0]);
+            dto.setCantidadNotificacionesNoVistas(Integer.parseInt(columna[1]));
+            dtos.add(dto);
+        }
+        return dtos;
     }
 }

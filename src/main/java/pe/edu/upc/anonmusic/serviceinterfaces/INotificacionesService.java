@@ -9,4 +9,5 @@ public interface INotificacionesService {
     public void post(Notificaciones notificacion);
     public void update(Notificaciones notificacion);
     public void delete(int id);
+    List<String[]>CantidadNotificacionesNoVistas();
 }
