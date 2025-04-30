@@ -1,9 +1,11 @@
 package pe.edu.upc.anonmusic.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.anonmusic.entities.Usuarios;
 
 import java.time.LocalDate;
@@ -11,6 +13,17 @@ import java.util.List;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
+    public Usuarios findOneByUsername(String username);
+
+    //BUSCAR POR NOMBRE
+    @Query("select count(u.username) from Usuarios u where u.username =:username")
+    public int buscarUsername(@Param("username") String nombre);
+    @Transactional
+    @Modifying
+    @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
+    public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);
+
+
     @Query(value="Select u.username as \"Nombre de usuario\", count (r.tipo= true) as \"Likes\"\n" +
             "from usuarios u\n" +
             "join publicaciones p on U.id_usuario = P.id_usuario\n" +
