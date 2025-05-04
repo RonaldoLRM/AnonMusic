@@ -58,4 +58,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
         return uR.UsuariosconMasNotificacionesNoLeidas();
     }
 
+    @Override
+    public List<String[]> usuariosConMasReaccionesNegativas() {
+        return uR.usuariosConMasReaccionesNegativas();
+    }
+
 }

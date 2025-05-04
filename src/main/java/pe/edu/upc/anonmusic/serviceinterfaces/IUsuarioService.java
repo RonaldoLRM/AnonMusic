@@ -17,5 +17,5 @@ public interface IUsuarioService {
     List<String[]> UsuarioconPlaylistCreadas();
     List<String[]> UsuariosconMasMusicaAnonima();
     List<String[]> UsuariosconMasNotificacionesNoLeidas();
-
+    List<String[]> usuariosConMasReaccionesNegativas();
 }

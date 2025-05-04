@@ -65,4 +65,13 @@ public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
             "ORDER BY total_notificaciones_no_leidas DESC\n" +
             "LIMIT 5;", nativeQuery = true)
     List<String[]> UsuariosconMasNotificacionesNoLeidas();
+    @Query(value = "SELECT u.id_usuario, u.username, COUNT(r.id_reacciones) AS total_reacciones_negativas \n" +
+            "            FROM usuarios u \n" +
+            "            LEFT JOIN reacciones r ON u.id_usuario = r.idusuario \n" +
+            "            WHERE r.tipo = FALSE\n" +
+            "            GROUP BY u.id_usuario \n" +
+            "            ORDER BY total_reacciones_negativas DESC \n" +
+            "            LIMIT 5;", nativeQuery = true)
+    List<String[]> usuariosConMasReaccionesNegativas();
+
 }

@@ -2,7 +2,6 @@ package pe.edu.upc.anonmusic.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.anonmusic.dtos.*;
 import pe.edu.upc.anonmusic.entities.Usuarios;
@@ -118,6 +117,19 @@ public class UsuarioController {
             dto.setIdUsuario(Integer.parseInt(columna[0]));
             dto.setUsername(columna[1]);
             dto.setTotal_notificaciones_no_leidas(Integer.parseInt(columna[2]));
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+    @GetMapping("/usuariosconreaccionesmasnegativas")
+    public List<UsuariosConMasReaccionesNegativasDTO> usuariosconreaccionesmasnegativas()
+    {
+        List<String[]>listas=uS.usuariosConMasReaccionesNegativas();
+        List<UsuariosConMasReaccionesNegativasDTO> dtos=new ArrayList<>();
+        for(String[] columna:listas) {
+            UsuariosConMasReaccionesNegativasDTO dto=new UsuariosConMasReaccionesNegativasDTO();
+            dto.setIdUsuario(Integer.parseInt(columna[0]));
+            dto.setCantidadReacciones(Integer.parseInt(columna[1]));
             dtos.add(dto);
         }
         return dtos;
