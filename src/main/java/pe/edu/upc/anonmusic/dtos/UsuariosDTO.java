@@ -11,7 +11,6 @@ public class UsuariosDTO {
     private int idUsuario;
     private String email;
     private String username;
-    private String password;
     private Boolean enabled;
     public int getIdUsuario() {
         return idUsuario;
@@ -35,14 +34,6 @@ public class UsuariosDTO {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Boolean getEnabled() {
