@@ -2,7 +2,7 @@ package pe.edu.upc.anonmusic.dtos;
 
 public class UsuariosConMasReaccionesNegativasDTO {
     private int idUsuario;
-    public int cantidadReacciones;
+    private int cantidadReacciones;
 
     public int getIdUsuario() {
         return idUsuario;

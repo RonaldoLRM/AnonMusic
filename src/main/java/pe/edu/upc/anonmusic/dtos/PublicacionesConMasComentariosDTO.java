@@ -2,7 +2,7 @@ package pe.edu.upc.anonmusic.dtos;
 
 public class PublicacionesConMasComentariosDTO {
     private int idPublicacion;
-    public int cantidadComentarios;
+    private int cantidadComentarios;
 
     public int getIdPublicacion() {
         return idPublicacion;

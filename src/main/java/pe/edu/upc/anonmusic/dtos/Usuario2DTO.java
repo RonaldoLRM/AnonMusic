@@ -5,7 +5,7 @@ public class Usuario2DTO {
     private String email;
     private String username;
     private Boolean enabled;
-    public int getIdUsuario() {
+    private int getIdUsuario() {
         return idUsuario;
     }
 

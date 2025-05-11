@@ -3,7 +3,7 @@ package pe.edu.upc.anonmusic.dtos;
 public class UsuariosConMasNotificacionesNoLeidasDTO {
     private int idUsuario;
     private String username;
-    public int total_notificaciones_no_leidas;
+    private int total_notificaciones_no_leidas;
 
     public int getIdUsuario() {
         return idUsuario;

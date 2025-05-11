@@ -12,6 +12,7 @@ public class UsuariosDTO {
     private String email;
     private String username;
     private Boolean enabled;
+    private String password;
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -42,5 +43,13 @@ public class UsuariosDTO {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

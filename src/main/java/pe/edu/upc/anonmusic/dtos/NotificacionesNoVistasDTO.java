@@ -2,7 +2,7 @@ package pe.edu.upc.anonmusic.dtos;
 
 public class NotificacionesNoVistasDTO {
     private String tipoNotificacion;
-    public int cantidadNotificacionesNoVistas;
+    private int cantidadNotificacionesNoVistas;
 
     public String getTipoNotificacion() {
         return tipoNotificacion;

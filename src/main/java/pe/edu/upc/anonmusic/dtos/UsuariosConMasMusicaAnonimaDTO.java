@@ -3,7 +3,7 @@ package pe.edu.upc.anonmusic.dtos;
 public class UsuariosConMasMusicaAnonimaDTO {
     private int idUsuario;
     private String username;
-    public int total_musica_anonima;
+    private int total_musica_anonima;
 
     public int getIdUsuario() {
         return idUsuario;

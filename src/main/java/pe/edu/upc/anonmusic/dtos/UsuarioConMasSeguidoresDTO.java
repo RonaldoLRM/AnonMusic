@@ -3,8 +3,8 @@ package pe.edu.upc.anonmusic.dtos;
 public class UsuarioConMasSeguidoresDTO {
     private int idUsuario;
     private String username;
-    public String correo;
-    public int totalseguidores;
+    private String correo;
+    private int totalseguidores;
 
     public int getIdUsuario() {
         return idUsuario;

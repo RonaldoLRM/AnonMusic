@@ -3,7 +3,7 @@ package pe.edu.upc.anonmusic.dtos;
 public class UsuariosPorRolDTO {
     private int id;
     private String rol;
-    public int cantidad_usuarios;
+    private int cantidad_usuarios;
 
     public int getId() {
         return id;
