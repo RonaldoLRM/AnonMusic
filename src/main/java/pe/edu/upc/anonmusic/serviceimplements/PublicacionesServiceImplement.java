@@ -6,6 +6,7 @@ import pe.edu.upc.anonmusic.entities.Publicaciones;
 import pe.edu.upc.anonmusic.repositories.IPublicacionesRepository;
 import pe.edu.upc.anonmusic.serviceinterfaces.IPublicacionesService;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class PublicacionesServiceImplement implements IPublicacionesService {
@@ -35,5 +36,10 @@ public class PublicacionesServiceImplement implements IPublicacionesService {
     @Override
     public List<String[]> PublicacionesConMasComentarios() {
         return pR.PublicacionesConMasComentarios();
+    }
+
+    @Override
+    public List<String[]> PublicacionesPorFecha(LocalDate fechaingresada) {
+        return pR.PublicacionesPorFecha(fechaingresada);
     }
 }

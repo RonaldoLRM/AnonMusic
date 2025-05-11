@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.anonmusic.dtos.PublicacionesConMasComentariosDTO;
 import pe.edu.upc.anonmusic.dtos.PublicacionesDTO;
+import pe.edu.upc.anonmusic.dtos.PublicacionesFechasIngresadasDTO;
 import pe.edu.upc.anonmusic.entities.Publicaciones;
 import pe.edu.upc.anonmusic.serviceinterfaces.IPublicacionesService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,6 +55,19 @@ public class PublicacionesController {
             PublicacionesConMasComentariosDTO dto=new PublicacionesConMasComentariosDTO();
             dto.setIdPublicacion(Integer.parseInt(columna[0]));
             dto.setCantidadComentarios(Integer.parseInt(columna[1]));
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+
+    @GetMapping("/publicacionesporfecha")
+    public List<PublicacionesFechasIngresadasDTO> publicacionesporfecha(@RequestParam LocalDate fechaingresada){
+        List<String[]>Lista=pS.PublicacionesPorFecha(fechaingresada);
+        List<PublicacionesFechasIngresadasDTO> dtos=new ArrayList<>();
+        for(String[] columna:Lista){
+            PublicacionesFechasIngresadasDTO dto=new PublicacionesFechasIngresadasDTO();
+            dto.setFechaPublicacion(LocalDate.parse(columna[0]));
+            dto.setCantidadPublicacion(Integer.parseInt(columna[1]));
             dtos.add(dto);
         }
         return dtos;

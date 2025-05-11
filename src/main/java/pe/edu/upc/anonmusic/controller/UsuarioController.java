@@ -19,10 +19,10 @@ public class UsuarioController {
     private IUsuarioService uS;
 
     @GetMapping("/listado")
-    public List<UsuariosDTO> listar() {
+    public List<Usuario2DTO> listar() {
         return uS.list().stream().map(x->{
         ModelMapper m=new ModelMapper();
-        return m.map(x,UsuariosDTO.class);
+        return m.map(x,Usuario2DTO.class);
         }).collect(Collectors.toList());
     }
     @GetMapping("{id}")
