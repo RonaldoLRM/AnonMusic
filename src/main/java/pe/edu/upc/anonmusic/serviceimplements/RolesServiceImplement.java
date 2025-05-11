@@ -33,6 +33,4 @@ public class RolesServiceImplement implements IRolesService {
         rR.deleteById(id);
     }
 
-    @Override
-    public List<String[]> CantidadDeUsuariosPorRol(){return rR.CantidadDeUsuariosPorRol();}
 }

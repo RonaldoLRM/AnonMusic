@@ -9,6 +9,4 @@ public interface IRolesService {
     public void post(Roles roles);
     public void update(Roles roles);
     public void delete(int id);
-
-    List<String[]> CantidadDeUsuariosPorRol();
 }

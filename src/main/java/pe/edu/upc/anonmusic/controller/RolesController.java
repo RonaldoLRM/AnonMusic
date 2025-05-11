@@ -45,16 +45,4 @@ public class RolesController {
         rS.delete(id);
     }
 
-    @GetMapping("/cantidadusuariosporrol")
-    public List<UsuariosPorRolDTO> cantidadusuariosporrol() {
-        List<String[]> listas = rS.CantidadDeUsuariosPorRol();
-        List<UsuariosPorRolDTO> dtos = new ArrayList<>();
-        for (String[] columna : listas) {
-            UsuariosPorRolDTO dto = new UsuariosPorRolDTO();
-            dto.setRol(columna[0]);
-            dto.cantidad_usuarios = Integer.parseInt(columna[1]);
-            dtos.add(dto);
-        }
-        return dtos;
-    }
 }

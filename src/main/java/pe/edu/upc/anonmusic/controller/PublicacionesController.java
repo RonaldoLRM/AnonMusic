@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.anonmusic.dtos.PublicacionesConMasComentariosDTO;
-import pe.edu.upc.anonmusic.dtos.PublicidadDTO;
+import pe.edu.upc.anonmusic.dtos.PublicacionesDTO;
 import pe.edu.upc.anonmusic.entities.Publicaciones;
 import pe.edu.upc.anonmusic.serviceinterfaces.IPublicacionesService;
 
@@ -16,26 +16,26 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/publicaciones")
-public class PublicidadController {
-    private static final Logger log = LoggerFactory.getLogger(PublicidadController.class);
+public class PublicacionesController {
+    private static final Logger log = LoggerFactory.getLogger(PublicacionesController.class);
     @Autowired
     private IPublicacionesService pS;
 
     @GetMapping("/listado")
-    public List<PublicidadDTO> listar() {
+    public List<PublicacionesDTO> listar() {
         return pS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
-            return m.map(x,PublicidadDTO.class);
+            return m.map(x, PublicacionesDTO.class);
         }).collect(Collectors.toList());
     }
     @PostMapping("/registrar")
-    public void agregar(@RequestBody PublicidadDTO dto) {
+    public void agregar(@RequestBody PublicacionesDTO dto) {
         ModelMapper m=new ModelMapper();
         Publicaciones p=m.map(dto,Publicaciones.class);
         pS.post(p);
     }
     @PutMapping("/modificar")
-    public void modificar(@RequestBody PublicidadDTO dto) {
+    public void modificar(@RequestBody PublicacionesDTO dto) {
         ModelMapper m=new ModelMapper();
         Publicaciones p=m.map(dto,Publicaciones.class);
         pS.update(p);

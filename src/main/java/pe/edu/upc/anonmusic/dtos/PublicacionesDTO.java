@@ -4,7 +4,7 @@ import pe.edu.upc.anonmusic.entities.Usuarios;
 
 import java.time.LocalDate;
 
-public class PublicidadDTO {
+public class PublicacionesDTO {
     private int idPublicacion;
     private String tipoPublicacion;
     private LocalDate fechaPublicacion;
