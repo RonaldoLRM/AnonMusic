@@ -2,6 +2,7 @@ package pe.edu.upc.anonmusic.serviceinterfaces;
 
 import pe.edu.upc.anonmusic.entities.Musica;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IMusicaService {
@@ -11,4 +12,5 @@ public interface IMusicaService {
     public void update(Musica musica);
     public void delete(int id);
     List<String[]> UsuariossinAsesoramientos();
+    List<String[]> CantidadDeMusicasPorFecha(LocalDate fechaInicio , LocalDate fechaFin);
 }

@@ -3,11 +3,13 @@ package pe.edu.upc.anonmusic.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.anonmusic.dtos.CantidadDeMusicasPorUnRangoDeFechasDTO;
 import pe.edu.upc.anonmusic.dtos.MusicaDTO;
 import pe.edu.upc.anonmusic.dtos.UsuarioQ2DTO;
 import pe.edu.upc.anonmusic.entities.Musica;
 import pe.edu.upc.anonmusic.serviceinterfaces.IMusicaService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,6 +63,18 @@ public class MusicaController {
             UsuarioQ2DTO dto=new UsuarioQ2DTO();
             dto.setUsername(columna[0]);
             dto.setNombreMusica(columna[1]);
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+    @GetMapping("/cantidadmusicasporfechas")
+    public List<CantidadDeMusicasPorUnRangoDeFechasDTO> cantidadmusicasporfechas(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechafin)
+    {
+        List<String[]>lista=mS.CantidadDeMusicasPorFecha(fechaInicio,fechafin);
+        List<CantidadDeMusicasPorUnRangoDeFechasDTO> dtos=new ArrayList<>();
+        for(String[] columna:lista) {
+            CantidadDeMusicasPorUnRangoDeFechasDTO dto=new CantidadDeMusicasPorUnRangoDeFechasDTO();
+            dto.setCantidadMusicas(Integer.parseInt(columna[0]));
             dtos.add(dto);
         }
         return dtos;

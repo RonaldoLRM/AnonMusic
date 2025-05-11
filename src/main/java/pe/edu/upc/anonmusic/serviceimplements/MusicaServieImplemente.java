@@ -6,6 +6,7 @@ import pe.edu.upc.anonmusic.entities.Musica;
 import pe.edu.upc.anonmusic.repositories.IMusicaRepository;
 import pe.edu.upc.anonmusic.serviceinterfaces.IMusicaService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -42,4 +43,7 @@ public class MusicaServieImplemente implements IMusicaService {
     public List<String[]> UsuariossinAsesoramientos() {
         return mR.UsuariossinAsesoramientos();
     }
+
+    @Override
+    public List<String[]> CantidadDeMusicasPorFecha(LocalDate fechaInicio, LocalDate fechaFin) {return mR.CantidadDeMusicasPorFecha(fechaInicio, fechaFin); }
 }
