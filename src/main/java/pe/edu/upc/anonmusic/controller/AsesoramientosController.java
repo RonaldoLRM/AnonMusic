@@ -31,6 +31,13 @@ public class AsesoramientosController {
         aS.post(a);
     }
 
+    @GetMapping("/{id}")
+    public AsesoramientosDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        AsesoramientosDTO dto = m.map(aS.searchId(id), AsesoramientosDTO.class);
+        return dto;
+    }
+
     @PutMapping("/modificar")
     public void modificar(@RequestBody AsesoramientosDTO dto) {
         ModelMapper m=new ModelMapper();

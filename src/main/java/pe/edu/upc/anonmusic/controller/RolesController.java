@@ -3,6 +3,7 @@ package pe.edu.upc.anonmusic.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.anonmusic.dtos.NotificacionesDTO;
 import pe.edu.upc.anonmusic.dtos.RolesDTO;
 import pe.edu.upc.anonmusic.dtos.UsuariosPorRolDTO;
 import pe.edu.upc.anonmusic.entities.Roles;
@@ -16,11 +17,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/Roles")
 public class RolesController {
     @Autowired
-    private IRolesService rS;
+    private IRolesService roS;
 
     @GetMapping("/listado")
     public List<RolesDTO> listar(){
-        return rS.list().stream().map(x -> {
+        return roS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x,RolesDTO.class);
         }).collect(Collectors.toList());
@@ -30,19 +31,26 @@ public class RolesController {
     public void agregar(@RequestBody RolesDTO dto){
         ModelMapper m = new ModelMapper();
         Roles r = m.map(dto,Roles.class);
-        rS.post(r);
+        roS.post(r);
+    }
+
+    @GetMapping("/{id}")
+    public RolesDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        RolesDTO dto = m.map(roS.searchId(id), RolesDTO.class);
+        return dto;
     }
 
     @PutMapping("/modificar")
     public void modificar(@RequestBody RolesDTO dto){
         ModelMapper m = new ModelMapper();
         Roles r = m.map(dto,Roles.class);
-        rS.update(r);
+        roS.update(r);
     }
 
     @DeleteMapping("{id}")
     public void eliminar(@PathVariable("id")int id){
-        rS.delete(id);
+        roS.delete(id);
     }
 
 }

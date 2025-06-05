@@ -2,6 +2,7 @@ package pe.edu.upc.anonmusic.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.anonmusic.entities.Asesoramientos;
 import pe.edu.upc.anonmusic.entities.Publicaciones;
 import pe.edu.upc.anonmusic.repositories.IPublicacionesRepository;
 import pe.edu.upc.anonmusic.serviceinterfaces.IPublicacionesService;
@@ -21,6 +22,11 @@ public class PublicacionesServiceImplement implements IPublicacionesService {
     @Override
     public void post(Publicaciones publicaciones) {
         pR.save(publicaciones);
+    }
+
+    @Override
+    public Publicaciones searchId(int id) {
+        return pR.findById(id).orElse(new Publicaciones());
     }
 
     @Override

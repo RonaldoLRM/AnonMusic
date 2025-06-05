@@ -2,6 +2,7 @@ package pe.edu.upc.anonmusic.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.anonmusic.entities.Asesoramientos;
 import pe.edu.upc.anonmusic.entities.PlaylistsXUsuario;
 import pe.edu.upc.anonmusic.repositories.IPlaylistsXUsuarioRepository;
 import pe.edu.upc.anonmusic.serviceinterfaces.IPlaylistsXUsuarioService;
@@ -20,6 +21,11 @@ public class PlaylistsXUsuarioServiceImplement implements IPlaylistsXUsuarioServ
     @Override
     public void post(PlaylistsXUsuario playlistsXUsuario) {
         plR.save(playlistsXUsuario);
+    }
+
+    @Override
+    public PlaylistsXUsuario searchId(int id) {
+        return plR.findById(id).orElse(new PlaylistsXUsuario());
     }
 
     @Override

@@ -2,6 +2,7 @@ package pe.edu.upc.anonmusic.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.anonmusic.entities.Asesoramientos;
 import pe.edu.upc.anonmusic.entities.Notificaciones;
 import pe.edu.upc.anonmusic.repositories.INotificacionesRepository;
 import pe.edu.upc.anonmusic.serviceinterfaces.INotificacionesService;
@@ -20,6 +21,11 @@ public class NotificacionesServiceImplement implements INotificacionesService {
     @Override
     public void post(Notificaciones notificacion) {
         nR.save(notificacion);
+    }
+
+    @Override
+    public Notificaciones searchId(int id) {
+        return nR.findById(id).orElse(new Notificaciones());
     }
 
     @Override

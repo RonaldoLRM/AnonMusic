@@ -2,6 +2,7 @@ package pe.edu.upc.anonmusic.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.anonmusic.entities.Asesoramientos;
 import pe.edu.upc.anonmusic.entities.Reacciones;
 import pe.edu.upc.anonmusic.repositories.IReaccionesRepository;
 import pe.edu.upc.anonmusic.serviceinterfaces.IReaccionesService;
@@ -20,6 +21,11 @@ public class ReaccionesServiceImplement implements IReaccionesService {
     @Override
     public void post(Reacciones reacciones) {
         rR.save(reacciones);
+    }
+
+    @Override
+    public Reacciones searchId(int id) {
+        return rR.findById(id).orElse(new Reacciones());
     }
 
     @Override

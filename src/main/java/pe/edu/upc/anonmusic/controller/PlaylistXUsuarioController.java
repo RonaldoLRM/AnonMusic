@@ -3,6 +3,7 @@ package pe.edu.upc.anonmusic.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.anonmusic.dtos.NotificacionesDTO;
 import pe.edu.upc.anonmusic.dtos.PlaylistsXUsuarioDTO;
 import pe.edu.upc.anonmusic.entities.PlaylistsXUsuario;
 import pe.edu.upc.anonmusic.serviceinterfaces.IPlaylistsXUsuarioService;
@@ -30,6 +31,14 @@ public class PlaylistXUsuarioController {
         PlaylistsXUsuario pl=m.map(dto, PlaylistsXUsuario.class);
         plS.post(pl);
     }
+
+    @GetMapping("/{id}")
+    public PlaylistsXUsuarioDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        PlaylistsXUsuarioDTO dto = m.map(plS.searchId(id), PlaylistsXUsuarioDTO.class);
+        return dto;
+    }
+
     @PutMapping("/modificar")
     public void modificar(@RequestBody PlaylistsXUsuarioDTO dto) {
         ModelMapper m=new ModelMapper();

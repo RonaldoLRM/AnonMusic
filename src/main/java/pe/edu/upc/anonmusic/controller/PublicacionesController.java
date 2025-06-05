@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.anonmusic.dtos.NotificacionesDTO;
 import pe.edu.upc.anonmusic.dtos.PublicacionesConMasComentariosDTO;
 import pe.edu.upc.anonmusic.dtos.PublicacionesDTO;
 import pe.edu.upc.anonmusic.dtos.PublicacionesFechasIngresadasDTO;
@@ -36,6 +37,14 @@ public class PublicacionesController {
         Publicaciones p=m.map(dto,Publicaciones.class);
         pS.post(p);
     }
+
+    @GetMapping("/{id}")
+    public PublicacionesDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        PublicacionesDTO dto = m.map(pS.searchId(id), PublicacionesDTO.class);
+        return dto;
+    }
+
     @PutMapping("/modificar")
     public void modificar(@RequestBody PublicacionesDTO dto) {
         ModelMapper m=new ModelMapper();

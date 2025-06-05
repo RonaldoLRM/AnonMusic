@@ -3,6 +3,7 @@ package pe.edu.upc.anonmusic.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.anonmusic.dtos.NotificacionesDTO;
 import pe.edu.upc.anonmusic.dtos.SeguidosDTO;
 import pe.edu.upc.anonmusic.entities.Seguidos;
 import pe.edu.upc.anonmusic.serviceinterfaces.ISeguidosService;
@@ -14,10 +15,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/Seguidos")
 public class SeguidosController {
     @Autowired
-    private ISeguidosService rS;
+    private ISeguidosService seS;
     @GetMapping("/listado")
     public List<SeguidosDTO> listar(){
-        return rS.list().stream().map(x -> {
+        return seS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x,SeguidosDTO.class);
         }).collect(Collectors.toList());
@@ -26,19 +27,26 @@ public class SeguidosController {
     @PostMapping("/registrar")
     public void agregar(@RequestBody SeguidosDTO dto){
         ModelMapper m = new ModelMapper();
-        Seguidos r = m.map(dto,Seguidos.class);
-        rS.post(r);
+        Seguidos se = m.map(dto,Seguidos.class);
+        seS.post(se);
+    }
+
+    @GetMapping("/{id}")
+    public SeguidosDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        SeguidosDTO dto = m.map(seS.searchId(id), SeguidosDTO.class);
+        return dto;
     }
 
     @PutMapping("/modificar")
     public void modificar(@RequestBody SeguidosDTO dto){
         ModelMapper m = new ModelMapper();
         Seguidos r = m.map(dto,Seguidos.class);
-        rS.update(r);
+        seS.update(r);
     }
 
     @DeleteMapping("{id}")
     public void eliminar(@PathVariable("id")int id){
-        rS.delete(id);
+        seS.delete(id);
     }
 }

@@ -24,6 +24,11 @@ public class AsesoramientosServiceImplement implements IAsesoramientosService {
     }
 
     @Override
+    public Asesoramientos searchId(int id) {
+        return aR.findById(id).orElse(new Asesoramientos());
+    }
+
+    @Override
     public void update(Asesoramientos asesoramientos){
         aR.save(asesoramientos);
     }

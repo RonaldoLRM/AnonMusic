@@ -3,6 +3,7 @@ package pe.edu.upc.anonmusic.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.anonmusic.dtos.ComentariosDTO;
 import pe.edu.upc.anonmusic.dtos.NotificacionesDTO;
 import pe.edu.upc.anonmusic.dtos.NotificacionesNoVistasDTO;
 import pe.edu.upc.anonmusic.entities.Notificaciones;
@@ -31,6 +32,14 @@ public class NotificacionesController {
         Notificaciones n=m.map(dto,Notificaciones.class);
         nS.post(n);
     }
+
+    @GetMapping("/{id}")
+    public NotificacionesDTO listarId(@PathVariable("id") int id) {
+        ModelMapper m = new ModelMapper();
+        NotificacionesDTO dto = m.map(nS.searchId(id), NotificacionesDTO.class);
+        return dto;
+    }
+
     @PutMapping("/modificar")
     public void modificar(@RequestBody NotificacionesDTO dto) {
         ModelMapper m=new ModelMapper();
