@@ -18,12 +18,21 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService uS;
 
-    @GetMapping("/listado")
-    public List<Usuario2DTO> listar() {
-        return uS.list().stream().map(x->{
-        ModelMapper m=new ModelMapper();
-        return m.map(x,Usuario2DTO.class);
-        }).collect(Collectors.toList());
+    @GetMapping("/lista")
+    public List<Usuario2DTO> listaUsuarios() {
+        {
+            List<String[]> lista = uS.Listausuarios();
+            List<Usuario2DTO> dtos = new ArrayList<>();
+            for (String[] columna : lista) {
+                Usuario2DTO dto = new Usuario2DTO();
+                dto.setIdUsuario(Integer.parseInt(columna[0]));
+                dto.setEmail(columna[1]);
+                dto.setEnabled(Boolean.parseBoolean(columna[2].toString()));
+                dto.setUsername(columna[3]);
+                dtos.add(dto);
+            }
+            return dtos;
+        }
     }
     @GetMapping("{id}")
     public UsuariosDTO listarId(@PathVariable("id") int id) {
