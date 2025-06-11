@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface IUsuarioService {
-    public List<Usuarios> list();
+    List<String[]> Listausuarios();
     public Usuarios searchId(int id);
     public void post(Usuarios usuarios);
     public void update(Usuarios usuarios);
@@ -18,4 +18,5 @@ public interface IUsuarioService {
     List<String[]> UsuariosconMasMusicaAnonima();
     List<String[]> UsuariosconMasNotificacionesNoLeidas();
     List<String[]> usuariosConMasReaccionesNegativas();
+
 }

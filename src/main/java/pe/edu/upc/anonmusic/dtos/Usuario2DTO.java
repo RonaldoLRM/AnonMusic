@@ -4,8 +4,9 @@ public class Usuario2DTO {
     private int idUsuario;
     private String email;
     private String username;
-    private Boolean enabled;
-    private int getIdUsuario() {
+    private boolean enabled;
+
+    public int getIdUsuario() {
         return idUsuario;
     }
 
@@ -29,11 +30,11 @@ public class Usuario2DTO {
         this.username = username;
     }
 
-    public Boolean getEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 }

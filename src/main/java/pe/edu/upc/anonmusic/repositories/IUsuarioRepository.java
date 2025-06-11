@@ -73,5 +73,8 @@ public interface IUsuarioRepository extends JpaRepository<Usuarios, Integer> {
             "            ORDER BY total_reacciones_negativas DESC \n" +
             "            LIMIT 5;", nativeQuery = true)
     List<String[]> usuariosConMasReaccionesNegativas();
+    @Query(value="SELECT id_usuario,email,enabled,username\n" +
+            "FROM Usuarios",nativeQuery = true)
+    List<String[]> Listausuarios();
 
 }

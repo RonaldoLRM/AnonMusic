@@ -12,9 +12,10 @@ import java.util.List;
 public class UsuarioServiceImplement implements IUsuarioService {
     @Autowired
     private IUsuarioRepository uR;
+
     @Override
-    public List<Usuarios> list() {
-        return uR.findAll();
+    public List<String[]> Listausuarios() {
+        return uR.Listausuarios();
     }
 
     @Override
