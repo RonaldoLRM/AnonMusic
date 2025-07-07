@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class AsesoramientosDTO {
 
-    private int IdAsesoramiento;
+    private int idAsesoramiento;
 
     private LocalDate fechaSolicitud;
 
@@ -18,11 +18,11 @@ public class AsesoramientosDTO {
     private Usuarios usuario;
 
     public int getIdAsesoramiento() {
-        return IdAsesoramiento;
+        return idAsesoramiento;
     }
 
     public void setIdAsesoramiento(int idAsesoramiento) {
-        IdAsesoramiento = idAsesoramiento;
+        this.idAsesoramiento = idAsesoramiento;
     }
 
     public LocalDate getFechaSolicitud() {
